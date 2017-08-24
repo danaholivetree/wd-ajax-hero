@@ -54,9 +54,11 @@ $(document).ready(function() {
     }
   };
 
-  // $('button').click(function(){  $('form').submit() console.log($("#submit").val()) })
   $('form').submit(function(){
     event.preventDefault()
-    console.log($("#search").val())
+    var searchString = $("#search").val()
+    $.getJSON( "https://omdb-api.now.sh/?s="+searchString, function( data ) {
+      console.log(data)// Do something with data here
+    })
   })
 })
