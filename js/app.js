@@ -58,7 +58,18 @@ $(document).ready(function() {
     event.preventDefault()
     var searchString = $("#search").val()
     $.getJSON( "https://omdb-api.now.sh/?s="+searchString, function( data ) {
-      console.log(data)// Do something with data here
+  // console.log(data['Search'])
+      var arr = data['Search'].map(function(el){
+        var obj = {'id': el['imdbID'], 'poster': el['Poster'], 'title': el['Title'], 'year': el['Year'] }
+        movies.push(obj)
+        // return movies
+      })
+      console.log(movies)
+      renderMovies()
     })
+
   })
+
+
+
 })
