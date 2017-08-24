@@ -1,6 +1,4 @@
-(function() {
-  'use strict';
-
+$(document).ready(function() {
   const movies = [];
 
   const renderMovies = function() {
@@ -56,5 +54,9 @@
     }
   };
 
-  // ADD YOUR CODE HERE
-})();
+  // $('button').click(function(){  $('form').submit() console.log($("#submit").val()) })
+  $('form').submit(function(){
+    event.preventDefault()
+    console.log($("#search").val())
+  })
+})
