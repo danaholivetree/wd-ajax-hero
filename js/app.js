@@ -15,7 +15,9 @@ $(document).ready(function() {
         'data-tooltip': movie.title
       });
 
-      $title.tooltip({ delay: 50 }).text(movie.title);
+      $title.tooltip({
+        delay: 50
+      }).text(movie.title);
 
       const $poster = $('<img>').addClass('poster');
 
@@ -54,22 +56,21 @@ $(document).ready(function() {
     }
   };
 
-  $('form').submit(function(){
+  $('form').submit(function() {
     event.preventDefault()
     var searchString = $("#search").val()
-    $.getJSON( "https://omdb-api.now.sh/?s="+searchString, function( data ) {
-  // console.log(data['Search'])
-      var arr = data['Search'].map(function(el){
-        var obj = {'id': el['imdbID'], 'poster': el['Poster'], 'title': el['Title'], 'year': el['Year'] }
+    $.getJSON("https://omdb-api.now.sh/?s=" + searchString, function(data) {
+      var arr = data['Search'].map(function(el) {
+        var obj = {
+          'id': el['imdbID'],
+          'poster': el['Poster'],
+          'title': el['Title'],
+          'year': el['Year']
+        }
         movies.push(obj)
-        // return movies
       })
       console.log(movies)
       renderMovies()
     })
-
   })
-
-
-
 })
